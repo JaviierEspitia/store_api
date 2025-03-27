@@ -15,10 +15,9 @@ USER developer
 RUN mkdir -p /home/developer/app
 # use folder app
 WORKDIR /home/developer/app
-# copy Gemfile
-COPY ./Gemfile .
-# copy Gemfile.lock
-COPY ./Gemfile.lock .
+# copy Gemfile and Gemfile.lock
+COPY --chown=developer:developer ./Gemfile .
+COPY --chown=developer:developer ./Gemfile.lock .
 # install gems
 RUN bundle install
 # copy the main app
